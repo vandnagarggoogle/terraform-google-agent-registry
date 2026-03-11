@@ -24,6 +24,13 @@ variable "location" {
   type        = string
 }
 
+variable "endpoint_id" {
+  description = "The unique identifier for the Endpoint."
+  type        = string
+  default     = null
+}
+
+
 variable "filter" {
   description = "A filter string to find the Endpoint 
   type        = string

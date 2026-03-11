@@ -25,6 +25,12 @@ variable "location" {
   type        = string
 }
 
+variable "mcp_server_id" {
+  description = "The unique identifier for the MCP Server."
+  type        = string
+  default     = null
+}
+
 variable "filter" {
   description = "A filter string to find the Mcp server "
   type        = string

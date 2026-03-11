@@ -17,5 +17,6 @@
 data "google_agent_registry_agent" "default" {
   project  = var.project_id
   location = var.location
+  agent_id = var.agent_id
   filter = var.filter
 }
