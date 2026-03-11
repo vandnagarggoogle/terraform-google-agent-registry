@@ -17,6 +17,5 @@
 data "google_agent_registry_endpoint" "default" {
   project     = var.project_id
   location    = var.location
-  endpoint_id = var.endpoint_id
   filter = var.filter
 }

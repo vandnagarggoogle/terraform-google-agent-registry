@@ -24,12 +24,6 @@ variable "location" {
   type        = string
 }
 
-variable "agent_id" {
-  description = "The unique identifier for the Agent."
-  type        = string
-  default     = null
-}
-
 variable "filter" {
   description = "A filter string to find the Agent (e.g., 'display_name=\"my-agent\"')."
   type        = string
