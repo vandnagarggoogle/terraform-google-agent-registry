@@ -21,6 +21,10 @@ terraform {
       source  = "hashicorp/google-beta"
       version = ">= 7.21.0"
     }
+    google-nightly = {
+      source = "hashicorp/google-nightly"
+      version = "0.0.1-20260318.5"
+    }
   }
 
   provider_meta "google" {
