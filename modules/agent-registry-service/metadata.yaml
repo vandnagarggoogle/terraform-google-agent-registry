@@ -11,7 +11,7 @@ spec:
       repo: https://github.com/vandnagarggoogle/terraform-google-agent-registry.git
       sourceType: git
       dir: /modules/agent-registry-service
-    version: 0.0.13
+    version: 0.0.14
     actuationTool:
       flavor: Terraform
       version: ">= 0.13"
@@ -65,7 +65,7 @@ spec:
           - source:
               source: github.com/terraform-google-modules/terraform-google-lb-http//modules/backend
             spec:
-              outputExpr: '[{"url": apphub_service_uri[0].service_uri, "protocol_binding": "HTTP_JSON"}]'
+              outputExpr: "{\"url\": apphub_service_uri[0].service_uri, \"protocol_binding\": \"HTTP_JSON\"}"
           # Infra: From Private Service Connect Producer
           - source:
               source: github.com/terraform-google-modules/terraform-google-network//modules/private-service-connect-producer
@@ -76,7 +76,7 @@ spec:
           - source:
               source: github.com/GoogleCloudPlatform/terraform-google-cloud-functions
             spec:
-              outputExpr: '[{"url": function_uri, "protocol_binding": "HTTP_JSON"}]'
+              outputExpr: "{\"url\": function_uri, \"protocol_binding\": \"HTTP_JSON\"}"
       - name: agent_spec
         description: The spec of the Agent. Mutually exclusive with mcp_server_spec and endpoint_spec.
         varType: |-
@@ -94,7 +94,7 @@ spec:
               source: github.com/vandnagarggoogle/terraform-google-agent-registry//modules/agent-registry-agent
               version: ">= v0.0.8"
             spec:
-              outputExpr: '{"type": "AGENT_SPEC", "content": id}'
+              outputExpr: '{"type": "AGENT_SPEC", "content": agent_id}'
       - name: mcp_server_spec
         description: The spec of the MCP Server. Mutually exclusive with agent_spec and endpoint_spec.
         varType: |-
@@ -108,13 +108,11 @@ spec:
               version: ">= v0.0.8"
             spec:
               outputExpr: mcp_server
-              inputPath: mcp_server_spec
           - source:
               source: github.com/vandnagarggoogle/terraform-google-agent-registry//modules/agent-registry-mcp-server
               version: ">= v0.0.8"
             spec:
               outputExpr: '{"type": "TOOL_SPEC", "content": mcp_server_id}'
-              inputPath: mcp_server_spec
       - name: endpoint_spec
         description: The spec of the Endpoint. Mutually exclusive with agent_spec and mcp_server_spec.
         varType: |-
@@ -127,13 +125,11 @@ spec:
               version: ">= v0.0.8"
             spec:
               outputExpr: endpoint
-              inputPath: endpoint_spec
           - source:
               source: github.com/vandnagarggoogle/terraform-google-agent-registry//modules/agent-registry-endpoint
               version: ">= v0.0.8"
             spec:
               outputExpr: '{"type": "ENDPOINT_SPEC", "content": endpoint_id}'
-              inputPath: endpoint_spec
     outputs:
       - name: agent
         description: Details of the Agent configuration.
