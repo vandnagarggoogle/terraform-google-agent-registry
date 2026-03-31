@@ -23,7 +23,7 @@ terraform {
     }
     google-nightly = {
       source = "hashicorp/google-nightly"
-      version = "2026.3.23-0.0.3"
+      version = "2026.3.26-7.25.0"
     }
   }
 

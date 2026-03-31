@@ -11,7 +11,7 @@ spec:
       repo: https://github.com/vandnagarggoogle/terraform-google-agent-registry.git
       sourceType: git
       dir: /modules/agent-registry-service
-    version: 0.0.16
+    version: 0.0.17
     actuationTool:
       flavor: Terraform
       version: ">= 0.13"
@@ -165,4 +165,4 @@ spec:
       - source: hashicorp/google-beta
         version: ">= 7.21.0"
       - source: hashicorp/google-nightly
-        version: 2026.3.23-0.0.3
+        version: 2026.3.26-7.25.0
