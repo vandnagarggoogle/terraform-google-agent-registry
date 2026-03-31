@@ -11,7 +11,7 @@ spec:
       repo: https://github.com/vandnagarggoogle/terraform-google-agent-registry.git
       sourceType: git
       dir: /modules/agent-registry-agent
-    version: 0.0.11
+    version: 0.0.13
     actuationTool:
       flavor: Terraform
       version: ">= 0.13"
@@ -57,6 +57,8 @@ spec:
         description: The version of the Agent.
       - name: last_updated
         description: The last time the agent metadata was updated.
+      - name: agent_id
+        description: The agent id.
   requirements:
     roles:
       - level: PROJECT

@@ -30,3 +30,5 @@ spec:
       outputs:
         agent_display_name:
           visibility: VISIBILITY_ROOT
+        agent:
+          visibility: VISIBILITY_ROOT

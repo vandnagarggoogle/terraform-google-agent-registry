@@ -57,6 +57,8 @@ spec:
         description: The connection details (URL and protocol binding) for the Endpoint.
       - name: endpoint_update_time
         description: The timestamp when the endpoint was last updated.
+      - name: endpoint_id
+        description: The endpoint id.
   requirements:
     roles:
       - level: PROJECT

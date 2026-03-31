@@ -43,3 +43,8 @@ output "last_updated" {
   description = "The last time the agent metadata was updated."
   value       = data.google_agent_registry_agent.default.update_time
 }
+
+output "agent_id"{
+  description = "The agent id."
+  value       = data.google_agent_registry_agent.default.agent_id
+}
