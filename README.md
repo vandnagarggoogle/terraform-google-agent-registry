@@ -2,7 +2,7 @@
 
 ## Description
 ### Tagline
-This is an auto-generated module.
+Terraform module for managing Google Cloud Agent Registry
 
 ### Detailed
 This module was generated from [terraform-google-module-template](https://github.com/terraform-google-modules/terraform-google-module-template/), which by default generates a module that simply creates a GCS bucket. As the module develops, this README should be updated.
@@ -35,13 +35,18 @@ Deployment: Y mins
 Basic usage of this module is as follows:
 
 ```hcl
-module "agent_registry" {
-  source  = "terraform-google-modules/agent-registry/google"
-  version = "~> 0.1"
-
-  project_id  = "<PROJECT ID>"
-  bucket_name = "gcs-test-bucket"
+module "agent_registry_service" {
+  source     = "vandnagarggoogle/agent-registry/google//modules/agent-registry-service"
+  project_id = var.project_id
+  location   = "us-central1"
+  service_id = "test-service-${var.random_string}"
+  interfaces = [
+  { "protocol_binding" = "HTTP_JSON", "url" = "https://api.stripe.com" }]
+  endpoint_spec = {
+    type = "NO_SPEC"
+  }
 }
+
 ```
 
 Functional examples are included in the

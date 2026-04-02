@@ -22,7 +22,7 @@ spec:
   info:
     title: Agent Registry MCP Server
     source:
-      repo: https://github.com/vandnagarggoogle/terraform-google-agent-registry.git
+      repo: https://github.com/GoogleCloudPlatform/terraform-google-agent-registry.git
       sourceType: git
       dir: /modules/agent-registry-mcp-server
     version: 0.0.1
@@ -86,12 +86,10 @@ spec:
           - roles/networkservices.admin
           - roles/networksecurity.admin
           - roles/serviceusage.serviceUsageAdmin
-     services:
-      - agentregistry.googleapis.com
-      - apphub.googleapis.com
+    services:
       - cloudresourcemanager.googleapis.com
-      - serviceusage.googleapis.com
       - storage-api.googleapis.com
+      - serviceusage.googleapis.com
     providerVersions:
       - source: hashicorp/google-beta
         version: ">= 7.21.0"
