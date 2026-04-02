@@ -1,5 +1,5 @@
 /**
- * Copyright 2019 Google LLC
+ * Copyright 2026 Google LLC
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,42 +14,23 @@
  * limitations under the License.
  */
 
-
 locals {
-  per_module_services = {
-    agent-registry-service = [
-      "agentregistry.googleapis.com",
-      "apphub.googleapis.com",
-      "aiplatform.googleapis.com",
-      "serviceusage.googleapis.com",
-      "cloudresourcemanager.googleapis.com",
-      "storage-api.googleapis.com"
-    ],
-  }
+  # Union of all services required by the registry modules
+  required_services = [
+    "agentregistry.googleapis.com",
+    "apphub.googleapis.com",
+    "aiplatform.googleapis.com",
+    "serviceusage.googleapis.com",
+    "cloudresourcemanager.googleapis.com",
+    "storage-api.googleapis.com"
+  ]
 }
 
-# Enable the required APIs in the test project
+# This resource will now find the local value and variable defined above
 resource "google_project_service" "test_project_apis" {
   for_each                   = toset(local.required_services)
   project                    = var.project_id
   service                    = each.value
   disable_on_destroy         = false
   disable_dependent_services = true
-}
-
-module "project" {
-  source  = "terraform-google-modules/project-factory/google"
-  version = "~> 17.0"
-
-  name              = "ci-agent-registry"
-  random_project_id = "true"
-  org_id            = var.org_id
-  folder_id         = var.folder_id
-  billing_account   = var.billing_account
-
-  activate_apis = [
-    "cloudresourcemanager.googleapis.com",
-    "storage-api.googleapis.com",
-    "serviceusage.googleapis.com"
-  ]
 }

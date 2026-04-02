@@ -15,10 +15,12 @@
  */
 
 output "project_id" {
-  value = module.project.project_id
+  description = "The ID of the test project."
+  value       = var.project_id
 }
 
 output "sa_key" {
-  value     = google_service_account_key.int_test.private_key
-  sensitive = true
+  description = "The service account key for testing."
+  value       = google_service_account_key.int_test.private_key
+  sensitive   = true
 }

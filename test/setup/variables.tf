@@ -13,6 +13,12 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+
+variable "project_id" {
+  description = "The GCP project ID where the setup resources will be provisioned."
+  type        = string
+}
+
 variable "org_id" {
   description = "The numeric organization id"
 }
